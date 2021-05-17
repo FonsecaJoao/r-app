@@ -1,0 +1,24 @@
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 8.33333%);
+    grid-template-rows: repeat(12, 8.33333%);
+    height: 100vh;
+}
+
+.spinner {
+    grid-column-start: 6;
+    grid-column-end: span 2;
+    grid-row-start: 5;
+    grid-row-end: span 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.widget {
+    grid-column-start: 6;
+    grid-column-end: span 2;
+    grid-row-start: 6;
+    grid-row-end: span 2;
+    text-align: center;
+    align-self: center;
+}
