@@ -25,7 +25,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
   subscribeRequests() {
     this.subscriptions.push(this.loadingService.serverStatus$.subscribe(data => {
       this.isLoading = false;
-      if (data.status !== 'OK') {
+      if (data.status === 'OK') {
         this.statusOkay = true;
         this.router.navigate(['/questions'])
       } else {
