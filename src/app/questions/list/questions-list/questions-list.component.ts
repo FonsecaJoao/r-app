@@ -15,6 +15,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'question', 'image_url', 'thumb_url', 'published_at'];
   dataSource: MatTableDataSource<QuestionsList> = new MatTableDataSource<QuestionsList>();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
 
   constructor(private questionsService: QuestionsService,
