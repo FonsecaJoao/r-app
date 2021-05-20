@@ -1,0 +1,34 @@
+.table-grid {
+    grid-column-start: 3;
+    grid-column-end: span 8;
+    grid-row-start: 3;
+    grid-row-end: span 9;
+}
+
+.filter-grid {
+    grid-column-start: 3;
+    grid-column-end: span 8;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    align-self: self-end;
+}
+
+.paginator-grid {
+    grid-column-start: 3;
+    grid-column-end: span 8;
+    grid-row-start: 11;
+    grid-row-end: 11;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-paginator {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
