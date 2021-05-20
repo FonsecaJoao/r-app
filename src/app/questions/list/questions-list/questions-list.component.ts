@@ -16,6 +16,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<QuestionsList> = new MatTableDataSource<QuestionsList>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild('input') inputField!: ElementRef;
 
 
   constructor(private questionsService: QuestionsService,
@@ -27,6 +28,10 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.subscribeRequests();
     this.questionsService.getQuestions(10, 0, '')
+  }
+
+  ngAfterViewInit() {
+    this.inputField.nativeElement.focus();
   }
 
   subscribeRequests() {
