@@ -21,6 +21,9 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   constructor(private questionsService: QuestionsService,
     private router: Router) { }
 
+   // TODO add possibility to write params in URL 
+  // , { queryParams: { order: 'popular' } }
+
   ngOnInit(): void {
     this.subscribeRequests();
     this.questionsService.getQuestions(10, 0, '')
