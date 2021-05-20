@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 8.33333%);
+    grid-template-rows: repeat(12, 8.33333%);
+    height: 100vh;
+}
