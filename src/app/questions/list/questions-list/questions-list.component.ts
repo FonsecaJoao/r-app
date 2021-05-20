@@ -49,4 +49,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
     console.log('TODO: on page change request questionsList' , event);
   }
 
+  goToDetails(elem: QuestionsList) {
+    this.router.navigate(['/questions/' + elem.id]);
+  }
 }
