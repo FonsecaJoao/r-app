@@ -13,12 +13,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
-import { QuestionsListComponent } from './questions/list/questions-list/questions-list.component';
-import { QuestionsDetailsComponent } from './questions/details/questions-details/questions-details.component';
-import { ShareScreenComponent } from './share-screen/share-screen.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { QuestionsListComponent } from './questions/questions-list/questions-list.component';
+import { QuestionsDetailsComponent } from './questions/questions-details/questions-details.component';
+import { ShareScreenComponent } from './share-screen/share-screen.component';
 
 @NgModule({
   declarations: [
