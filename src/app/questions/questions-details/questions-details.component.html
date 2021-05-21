@@ -1,0 +1,16 @@
+<main class="main-grid">
+
+    <button *ngIf="!isLoading" class="button-grid" mat-fab color="primary" (click)="goBack()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <div *ngIf="!isLoading" class="shared-grid">
+        <app-share-screen></app-share-screen>
+    </div>
+
+    <div *ngIf="isLoading" class="spinner-grid">
+        <mat-progress-spinner color="primary" mode="indeterminate" diameter="80" strokeWidth="2">
+        </mat-progress-spinner>
+    </div>
+
+</main>
