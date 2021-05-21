@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +35,8 @@ import { QuestionsDetailsComponent } from './questions/details/questions-details
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
