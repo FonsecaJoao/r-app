@@ -19,3 +19,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-self: center;
     justify-self: center;
 }
+
+.shared-grid {
+    grid-column-start: 8;
+    grid-column-end: 11;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    align-self: center;
+    text-align: right;
+
+    &--list {
+        @extend .shared-grid;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        align-self: self-end;
+    }
+}

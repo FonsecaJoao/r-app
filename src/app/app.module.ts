@@ -17,13 +17,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { QuestionsListComponent } from './questions/list/questions-list/questions-list.component';
 import { QuestionsDetailsComponent } from './questions/details/questions-details/questions-details.component';
+import { ShareScreenComponent } from './share-screen/share-screen.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoadingScreenComponent,
     QuestionsListComponent,
-    QuestionsDetailsComponent
+    QuestionsDetailsComponent,
+    ShareScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { QuestionsDetailsComponent } from './questions/details/questions-details
     MatInputModule,
     MatPaginatorModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
