@@ -10,3 +10,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     grid-template-rows: repeat(12, 8.33333%);
     height: 100vh;
 }
+
+.spinner-grid {
+    grid-column-start: 6;
+    grid-column-end: span 2;
+    grid-row-start: 5;
+    grid-row-end: span 2;
+    align-self: center;
+    justify-self: center;
+}
