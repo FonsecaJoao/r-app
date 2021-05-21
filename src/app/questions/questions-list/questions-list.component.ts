@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { QuestionsList, QuestionsService } from '../../service/questions.service';
+import { QuestionsList, QuestionsService } from '../service/questions.service';
 
 @Component({
   selector: 'app-questions-list',
@@ -12,8 +12,9 @@ import { QuestionsList, QuestionsService } from '../../service/questions.service
 })
 export class QuestionsListComponent implements OnInit, AfterViewInit {
   readonly subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'question', 'image_url', 'thumb_url', 'published_at'];
-  dataSource: MatTableDataSource<QuestionsList> = new MatTableDataSource<QuestionsList>();
+  public displayedColumns: string[] = ['id', 'question', 'image_url', 'thumb_url', 'published_at'];
+  public dataSource: MatTableDataSource<QuestionsList> = new MatTableDataSource<QuestionsList>();
+  public isLoading: boolean = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild('input') inputField!: ElementRef;
@@ -22,7 +23,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   constructor(private questionsService: QuestionsService,
     private router: Router) { }
 
-   // TODO add possibility to write params in URL 
+  // TODO add possibility to write params in URL 
   // , { queryParams: { order: 'popular' } }
 
   ngOnInit(): void {
@@ -37,7 +38,14 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   subscribeRequests() {
     this.subscriptions.push(this.questionsService.questionsList$.subscribe(data => {
       this.dataSource.data = data;
+      this.dataArrived();
     }));
+  }
+
+  dataArrived(): void {
+    if (this.dataSource.data) {
+      this.isLoading = false;
+    }
   }
 
   applyFilter(event: Event) {
@@ -46,7 +54,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   }
 
   changePage(event: any) {
-    console.log('TODO: on page change request questionsList' , event);
+    console.log('TODO: on page change request questionsList', event);
   }
 
   goToDetails(elem: QuestionsList) {

@@ -1,12 +1,20 @@
 <main class="main-grid">
 
-    <mat-form-field class="filter-grid">
+    <div *ngIf="isLoading" class="spinner-grid">
+        <mat-progress-spinner color="primary" mode="indeterminate" diameter="80" strokeWidth="2">
+        </mat-progress-spinner>
+    </div>
+
+    <div *ngIf="!isLoading" class="shared-grid--list">
+        <app-share-screen></app-share-screen>
+    </div>
+    
+    <mat-form-field [hidden]="isLoading" class="filter-grid">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
 
-    <div class="table-grid">
-
+    <div *ngIf="!isLoading" class="table-grid">
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -52,8 +60,8 @@
 
     </div>
 
-    <div class="paginator-grid">
-        <mat-paginator class="mat-elevation-z8" [length]="dataSource.data.length" [pageSize]="5" (page)="changePage($event)"></mat-paginator>
+    <div *ngIf="!isLoading" class="paginator-grid">
+        <mat-paginator class="mat-elevation-z8" [length]="dataSource.data.length" [pageSize]="10" (page)="changePage($event)"></mat-paginator>
     </div>
 
 </main>
