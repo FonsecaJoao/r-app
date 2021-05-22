@@ -15,7 +15,7 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnectionServiceModule } from 'ngx-connection-service';
 
@@ -38,6 +38,7 @@ import { ShareScreenComponent } from './share-screen/share-screen.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
