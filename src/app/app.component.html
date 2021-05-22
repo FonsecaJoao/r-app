@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div *ngIf="status === 'ONLINE'">
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="status === 'OFFLINE'">
+    <main class="main-grid">
+        <mat-icon class="icon-grid" color="primary">wifi_off</mat-icon>
+        <div class="spinner-grid">
+            <mat-progress-spinner color="primary" mode="indeterminate" diameter="80" strokeWidth="2">
+            </mat-progress-spinner>
+        </div>
+        <mat-label class="label-grid">Checking internet connection...</mat-label>
+    </main>
+</div>
