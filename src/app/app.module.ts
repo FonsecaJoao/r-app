@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +36,7 @@ import { ShareScreenComponent } from './share-screen/share-screen.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatTableModule,
@@ -41,7 +44,8 @@ import { ShareScreenComponent } from './share-screen/share-screen.component';
     MatInputModule,
     MatPaginatorModule,
     MatIconModule,
-    ReactiveFormsModule,
+    MatCardModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
