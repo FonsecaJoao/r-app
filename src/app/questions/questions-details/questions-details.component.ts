@@ -14,7 +14,6 @@ export class QuestionsDetailsComponent implements OnInit {
   readonly subscriptions: Subscription[] = [];
   public questionId!: number;
   public question!: QuestionsList;
-
   public isLoading: boolean = true;
   public form!: FormGroup;
 
@@ -25,6 +24,7 @@ export class QuestionsDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.subscriptions.push(this.route.params.subscribe(param => {
       this.questionId = param.questionId;
+
 
       this.subscribeRequests();
       this.questionsService.getQuestion(this.questionId);
@@ -48,7 +48,7 @@ export class QuestionsDetailsComponent implements OnInit {
       this.isLoading = false;
       this.initForm();
     }
-    }
+  }
 
   initForm() {
     this.form = new FormGroup({
@@ -61,6 +61,11 @@ export class QuestionsDetailsComponent implements OnInit {
       choice_selected: new FormControl()
     });
   }
+
+  vote() {
+    this.isLoading = true;
+
+    this.questionsService.updateQuestion(this.question);
   }
 
   goBack() {
