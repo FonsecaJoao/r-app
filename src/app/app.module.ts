@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConnectionServiceModule } from 'ngx-connection-service';
+
 
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { QuestionsListComponent } from './questions/questions-list/questions-list.component';
@@ -46,6 +48,7 @@ import { ShareScreenComponent } from './share-screen/share-screen.component';
     MatIconModule,
     MatCardModule,
     MatRadioModule,
+    ConnectionServiceModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
