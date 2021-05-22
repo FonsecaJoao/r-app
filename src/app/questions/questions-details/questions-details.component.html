@@ -13,4 +13,31 @@
         </mat-progress-spinner>
     </div>
 
+    <div class="form-grid">
+
+        <form *ngIf="!isLoading" [formGroup]="form" class="form-height">
+            <mat-card class="card-grid mat-elevation-z5">
+                <mat-card-header class="card-avatar">
+                    <img mat-card-avatar [src]="form.value.thumb_url" alt="Question's thumb image">
+                    <mat-card-title class="card-title-width">
+                        <span>{{ form.value.id + '. ' + form.value.question}}</span>
+                        <button style="float: right" mat-mini-fab color="primary" (click)="vote()">
+                            <mat-icon>plus_one</mat-icon>
+                        </button>
+                    </mat-card-title>
+                    <mat-card-subtitle>Published at: {{form.value.published_at}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="form.value.image_url" alt="Question's image">
+                <mat-card-content>
+                    <mat-radio-group>
+                        <mat-radio-button class="radio-width" *ngFor="let option of form.value.choices; let i = index;" [value]="option"
+                            color="primary">
+                            {{'Choice ' + (i+1) + ' : ' + option.choice + ' (' + option.votes + ' Votes)'}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+
 </main>
