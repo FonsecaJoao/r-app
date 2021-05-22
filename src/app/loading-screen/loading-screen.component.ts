@@ -27,7 +27,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       if (data.status === 'OK') {
         this.statusOkay = true;
-        this.router.navigate(['/questions'])
+        this.router.navigate(['/questions']);
       } else {
         this.statusOkay = false;
       }
