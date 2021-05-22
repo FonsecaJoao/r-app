@@ -16,7 +16,8 @@ export interface QuestionsList {
 })
 export class QuestionsService {
   public questionsList$: Subject<QuestionsList[]> = new Subject<QuestionsList[]>();
-  public questionItem$: Subject<QuestionsList[]> = new Subject<QuestionsList[]>();
+  public questionItem$: Subject<QuestionsList> = new Subject<QuestionsList>();
+  public questionItemUpdate$: Subject<QuestionsList> = new Subject<QuestionsList>();
 
 
   constructor(private http: HttpClient) { }
@@ -27,15 +28,32 @@ export class QuestionsService {
     ).subscribe(data => {
 
       this.questionsList$.next(data);
+    }, err => {
+      throw new Error(err);
     });
   }
 
   public getQuestion(questionId: number) {
-    return this.http.get<QuestionsList[]>(
-      `https://private-bbbe9-blissrecruitmentapi.apiary-mock.com/questions?${questionId}`
+    return this.http.get<QuestionsList>(
+      `https://private-bbbe9-blissrecruitmentapi.apiary-mock.com/questions/${questionId}`
     ).subscribe(data => {
 
       this.questionItem$.next(data);
+    }, err => {
+      throw new Error(err);
+    });
+  }
+
+
+  public updateQuestion(itemToUpdate: QuestionsList) {
+    return this.http.put(
+      `https://private-bbbe9-blissrecruitmentapi.apiary-mock.com/questions/${itemToUpdate.id}`,
+      { ...itemToUpdate }
+    ).subscribe(data => {
+
+      this.questionItemUpdate$.next(data as QuestionsList);
+    }, err => {
+      throw new Error(err);
     });
   }
 }
