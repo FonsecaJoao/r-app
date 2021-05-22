@@ -16,12 +16,14 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   public dataSource: MatTableDataSource<QuestionsList> = new MatTableDataSource<QuestionsList>();
   public questionsList!: QuestionsList[];
   public isLoading: boolean = true;
+  public inputValue: string = '';
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild('input') inputField!: ElementRef;
 
 
   constructor(private questionsService: QuestionsService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +32,16 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.inputField.nativeElement.focus();
+
+    const splitedUrl: string[] = this.router.routerState.snapshot.url.split('?');
+
+    if (splitedUrl.length > 1) {
+      const extractFilterValue = splitedUrl[1].split('=');
+      this.inputValue = extractFilterValue[1];
+    }
+
+    this.questionsService.getQuestions(10, 0, this.inputValue)
+
   }
 
   subscribeRequests() {
@@ -46,13 +58,25 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.questionsService.getQuestions(10, 0, filterValue.trim().toLowerCase());
+  search() {
+    this.isLoading = true;
+    this.changeQueryParamsInBrowserURL();
+    this.questionsService.getQuestions(10, 0, this.inputValue.trim().toLowerCase());
   }
 
   changePage(event: any) {
     console.log('TODO: on page change request questionsList', event);
+  }
+
+  changeQueryParamsInBrowserURL(){
+    this.router.navigate([], {
+     relativeTo: this.route,
+     queryParams: {
+       filter: this.inputValue.trim().toLowerCase()
+     },
+     queryParamsHandling: 'merge',
+     skipLocationChange: false
+   });
   }
 
   goToDetails(elem: QuestionsList) {
