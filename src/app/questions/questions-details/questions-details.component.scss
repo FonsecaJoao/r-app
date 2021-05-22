@@ -5,3 +5,33 @@
     grid-row-end: 2;
     place-self: center;
 }
+
+.form-grid {
+    grid-column-start: 3;
+    grid-column-end: 11;
+    grid-row-start: 3;
+    grid-row-end: 11;
+}
+
+.form-height {
+    height: 100%;
+    display: grid;
+}
+
+.card-grid {
+    max-width: 600px;
+    justify-self: center;
+}
+
+.card-title-width {
+    width: 500px;
+}
+  
+.card-avatar {
+    margin-bottom: 1rem;
+}
+
+.radio-width {
+    width: 100%;
+    padding: 4px 0;
+}
