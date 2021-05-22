@@ -7,7 +7,7 @@
 
 .filter-grid {
     grid-column-start: 3;
-    grid-column-end: span 8;
+    grid-column-end: span 7;
     grid-row-start: 2;
     grid-row-end: 2;
     align-self: self-end;
@@ -18,6 +18,14 @@
     grid-column-end: span 8;
     grid-row-start: 11;
     grid-row-end: 11;
+}
+
+.button-grid {
+    grid-column-start: 10;
+    grid-column-end: 10;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    align-self: center;
 }
 
 table {

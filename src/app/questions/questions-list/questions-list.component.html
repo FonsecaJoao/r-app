@@ -10,9 +10,13 @@
     </div>
     
     <mat-form-field [hidden]="isLoading" class="filter-grid">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" #input>
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="inputValue" #input>
     </mat-form-field>
+
+    <button class="button-grid" mat-raised-button color="primary" (click)="search()">
+        <mat-icon>search</mat-icon>
+    </button>
 
     <div *ngIf="!isLoading" class="table-grid">
 
@@ -50,18 +54,18 @@
 
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="goToDetails(row)"></tr>
+            <tr mat-row style="cursor: pointer;" *matRowDef="let row; columns: displayedColumns;" (click)="goToDetails(row)"></tr>
 
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                <td class="mat-cell" colspan="4">No results</td>
             </tr>
         </table>
 
     </div>
 
-    <div *ngIf="!isLoading" class="paginator-grid">
+    <!-- <div *ngIf="!isLoading" class="paginator-grid">
         <mat-paginator class="mat-elevation-z8" [length]="dataSource.data.length" [pageSize]="10" (page)="changePage($event)"></mat-paginator>
-    </div>
+    </div> -->
 
 </main>

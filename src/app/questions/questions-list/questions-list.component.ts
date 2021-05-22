@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { QuestionsList, QuestionsService } from '../service/questions.service';
 
@@ -14,6 +14,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   readonly subscriptions: Subscription[] = [];
   public displayedColumns: string[] = ['id', 'question', 'image_url', 'thumb_url', 'published_at'];
   public dataSource: MatTableDataSource<QuestionsList> = new MatTableDataSource<QuestionsList>();
+  public questionsList!: QuestionsList[];
   public isLoading: boolean = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -23,12 +24,8 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   constructor(private questionsService: QuestionsService,
     private router: Router) { }
 
-  // TODO add possibility to write params in URL 
-  // , { queryParams: { order: 'popular' } }
-
   ngOnInit(): void {
     this.subscribeRequests();
-    this.questionsService.getQuestions(10, 0, '')
   }
 
   ngAfterViewInit() {
@@ -37,13 +34,14 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
 
   subscribeRequests() {
     this.subscriptions.push(this.questionsService.questionsList$.subscribe(data => {
-      this.dataSource.data = data;
+      this.questionsList = data;
+      this.dataSource.data = this.questionsList;
       this.dataArrived();
     }));
   }
 
   dataArrived(): void {
-    if (this.dataSource.data) {
+    if (this.questionsList) {
       this.isLoading = false;
     }
   }
